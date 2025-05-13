@@ -38,10 +38,11 @@
         }
 
         p {
-            font-size: 1.4em;
+            font-size: 1.2em;
             margin-bottom: 25px;
             line-height: 1.7;
             color: #000;
+            font-weight: 600;
         }
 
         #mensagemInicial {
@@ -201,7 +202,7 @@
 </head>
 <body class="bg-light">
     <div class="container">
-        <h1 style="color:white; text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);">Uma Surpresa Especial!</h1>
+        <h1>Uma Surpresa Especial!</h1>
         <div id="mensagemInicial" class="page-transition">
             <p style="color:white; font-size: 1.7em; font-weight: bold;">Olá amigos, temos uma novidade emocionante para compartilhar com vocês. Preparem-se para uma pequena jornada!</p>
             <button class="btn btn-primary btn-custom" id="btnProximo1">
@@ -210,7 +211,7 @@
         </div>
 
         <div id="resultado1" class="page-transition hidden">
-            <p style="color:white;"> Vocês são muito importantes para nós e queremos que façam parte deste momento.</p>
+            <p style="color:white; font-weight: 600;"> Vocês são muito importantes para nós e queremos que façam parte deste momento.</p>
             <button class="btn btn-primary btn-custom" id="btnProximo2">
                 <i class="fas fa-heart"></i> Próximo
             </button>
@@ -218,7 +219,7 @@
         </div>
 
         <div id="resultado2" class="page-transition hidden">
-             <p style="color:white;"> Algo incrível está para acontecer em nossas vidas, algo que mudará tudo.</p>
+             <p style="color:white; font-weight: 600;"> Algo incrível está para acontecer em nossas vidas, algo que mudará tudo.</p>
             <button class="btn btn-primary btn-custom" id="btnProximo3">
                 <i class="fas fa-baby"></i> Próximo
             </button>
@@ -226,15 +227,15 @@
         </div>
 
         <div id="resultado3" class="page-transition hidden">
-            <p style="color:white; font-size: 1.4em;"> Preparem seus corações para a grande revelação!</p>
+            <p style="color:white; font-size: 1.4em; font-weight: bold;"> Preparem seus corações para a grande revelação!</p>
            <button class="btn btn-primary btn-custom" id="btnProximo4">
-                <i class="fas fa-drum"></i> Quase lá...
+                <i class="fas fa-drum"></i> Estão preparados?
             </button>
             <button class="btn btn-secondary btn-custom" id="btnVoltar3">Voltar</button>
         </div>
 
         <div id="resultado4" class="page-transition hidden">
-            <p style="color: white; font-size: 1.4em;">Chegou a hora...</p>
+            <p style="color: white; font-size: 1.4em; font-weight: bold;">Chegou a hora...</p>
             <button class="btn btn-primary btn-custom" id="btnProximo5">
                 <i class="fas fa-key"></i> Preparem-se
             </button>
@@ -244,10 +245,10 @@
         <div id="resultado" class="page-transition hidden">
             <h2 id="parabens" style="font-size: 5em;">Uhuuul!</h2>
             <p class="emoji">🎉 <i class="fas fa-baby"></i> 🍼👶</p>
-            <p>
+            <p style="font-size: 1.2em; font-weight: bold;">
                 Nós vamos ter um bebê! Estamos muito felizes em compartilhar essa alegria com vocês.
             </p>
-            </br><div style="display:flex; gap:10px; justify-content:center;">
+            <div style="display:flex; gap:10px; justify-content:center;">
               <button class="btn btn-success btn-custom" id="btnIniciarNovamente"> Iniciar Novamente </button>
             </div>
         </div>
