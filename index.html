@@ -194,7 +194,7 @@
             display:none;
         }
 
-        /* Media Queries para Responsividade */
+        /* Media Queries para Responsividade (Opcional, mas recomendado) */
         @media (max-width: 768px) {
             h1 {
                 font-size: 2.5em;
@@ -303,4 +303,116 @@
         <div id="resultado" class="page-transition hidden">
             <h2 id="parabens" style="font-size: 5em;">Uhuuul!</h2>
             <p class="emoji">🎉 <i class="fas fa-baby"></i> 🍼👶</p>
-            <p style="font-size: 1.2em; font-weight
+            <p style="font-size: 1.2em; font-weight: bold;">
+                Nós vamos ter um bebê! Estamos muito felizes em compartilhar essa alegria com vocês.
+            </p>
+            <div style="display:flex; gap:10px; justify-content:center;">
+                <button class="btn btn-success btn-custom" id="btnIniciarNovamente"> Iniciar Novamente </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const mensagemInicial = document.getElementById('mensagemInicial');
+        const resultado1 = document.getElementById('resultado1');
+        const resultado2 = document.getElementById('resultado2');
+        const resultado3 = document.getElementById('resultado3');
+        const resultado4 = document.getElementById('resultado4');
+        const resultadoFinal = document.getElementById('resultado');
+        const btnProximo1 = document.getElementById('btnProximo1');
+        const btnProximo2 = document.getElementById('btnProximo2');
+        const btnProximo3 = document.getElementById('btnProximo3');
+        const btnProximo4 = document.getElementById('btnProximo4');
+        const btnProximo5 = document.getElementById('btnProximo5');
+        const btnVoltar1 = document.getElementById('btnVoltar1');
+        const btnVoltar2 = document.getElementById('btnVoltar2');
+        const btnVoltar3 = document.getElementById('btnVoltar3');
+        const btnVoltar4 = document.getElementById('btnVoltar4');
+        const btnIniciarNovamente = document.getElementById('btnIniciarNovamente');
+
+
+        let animationIndex = 0;
+        const animations = ['zoomOutFadeIn', 'slideOutLeft', 'slideOutUp', 'fadeInDown'];
+
+        function getNextAnimation() {
+            const animation = animations[animationIndex];
+            animationIndex = (animationIndex + 1) % animations.length;
+            return animation;
+        }
+
+        function changePage(fromPage, toPage) {
+            const outAnimation = getNextAnimation();
+            const inAnimation = getNextAnimation();
+            fromPage.classList.remove('fadeIn');
+            fromPage.classList.add(outAnimation);
+
+            setTimeout(() => {
+                fromPage.style.display = 'none';
+                toPage.style.display = 'flex';
+                toPage.classList.remove('hidden');
+                toPage.classList.add('fadeIn');
+            }, 500);
+        }
+
+
+        btnProximo1.addEventListener('click', () => {
+            changePage(mensagemInicial, resultado1);
+        });
+
+        btnProximo2.addEventListener('click', () => {
+            changePage(resultado1, resultado2);
+        });
+
+        btnProximo3.addEventListener('click', () => {
+            changePage(resultado2, resultado3);
+        });
+
+        btnProximo4.addEventListener('click', () => {
+            changePage(resultado3, resultado4);
+        });
+
+        btnProximo5.addEventListener('click', () => {
+            changePage(resultado4, resultadoFinal);
+        });
+
+        btnVoltar1.addEventListener('click', () => {
+            resultado1.classList.remove('fadeIn');
+            resultado1.classList.add('slideOut');
+            setTimeout(() => {
+                resultado1.style.display = 'none';
+                mensagemInicial.style.display = 'flex';
+                mensagemInicial.classList.remove('hidden');
+                mensagemInicial.classList.add('fadeIn');
+            }, 500);
+        });
+
+        btnVoltar2.addEventListener('click', () => {
+            resultado2.classList.remove('fadeIn');
+            resultado2.classList.add('slideOut');
+            setTimeout(() => {
+                resultado2.style.display = 'none';
+                resultado1.style.display = 'flex';
+                resultado1.classList.remove('hidden');
+                resultado1.classList.add('fadeIn');
+            }, 500);
+        });
+
+        btnVoltar3.addEventListener('click', () => {
+            resultado3.classList.remove('fadeIn');
+            resultado3.classList.add('slideOut');
+            setTimeout(() => {
+                resultado3.style.display = 'none';
+                resultado2.style.display = 'flex';
+                resultado2.classList.remove('hidden');
+                resultado2.classList.add('fadeIn');
+            }, 500);
+        });
+
+        btnVoltar4.addEventListener('click', () => {
+            resultadoFinal.classList.remove('fadeIn');
+            resultadoFinal.classList.add('slideOut');
+            setTimeout(() => {
+                resultadoFinal.style.display = 'none'
+                      }, 500);
+        });
+    </script>
