@@ -3,14 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Surpresa Amigos!</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Surpresa Amigos!</title> <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         body {
             font-family: 'Arial', sans-serif;
-            background-image: linear-gradient(to bottom, #4fc3f7, #ec407a);
-            color: #2c3e50;
+            background-color: #000; /* Fundo preto */
+            color: white; /* Cor do texto padrão branca */
             margin: 0;
             padding: 0;
             overflow-x: hidden;
@@ -24,7 +23,8 @@
             text-align: center;
         }
 
-        h1 {
+        /* Título <h1> removido do HTML, então esta regra CSS não é mais necessária */
+        /* h1 {
             color: white;
             margin-bottom: 20px;
             font-size: 3em;
@@ -35,39 +35,66 @@
             0% { transform: scale(1); }
             50% { transform: scale(1.06); }
             100% { transform: scale(1); }
-        }
+        } */
 
         p {
             font-size: 1.2em;
             margin-bottom: 25px;
             line-height: 1.7;
-            color: #000; /* Ajustado para preto conforme a div inicial */
+            color: white; /* Garante que parágrafos dentro de divs escuras fiquem brancos */
             font-weight: 600;
         }
 
-        /* Estilo para os parágrafos dentro das divs de resultado que têm fundo colorido */
-        #resultado1 p, #resultado2 p, #resultado3 p, #resultado4 p {
-            color: white; /* Mantém a cor branca onde era intendedo */
+        /* O parágrafo final (#resultado) terá a cor padrão branca do body, então não precisa de cor específica */
+        #resultado p {
+            color: white; /* Mantém branco no fundo cinza escuro */
         }
 
-
-        #mensagemInicial {
-            background-image: linear-gradient(to bottom, #90caf9, #f48fb1);
+        #mensagemInicial, #resultado1, #resultado2, #resultado3, #resultado4 {
+            background-color: #1a1a1a; /* Fundo cinza escuro para as "páginas" */
             padding: 30px;
             border-radius: 16px;
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            /* Sombras ajustadas para serem visíveis em fundo escuro */
+            box-shadow: 0 6px 12px rgba(255, 255, 255, 0.15);
             transition: all 1s ease;
-            animation: fadeIn 1s ease; /* Animação inicial */
-            display: flex; /* Garante que o conteúdo inicial use flexbox para alinhamento */
+            /* Animação inicial controlada por JS */
+            display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            min-height: 100vh;
+            box-sizing: border-box;
         }
 
         #mensagemInicial:hover {
             transform: scale(1.04);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 8px 16px rgba(255, 255, 255, 0.2); /* Sombra ajustada no hover */
         }
+
+        #resultado {
+            /* A tela final (#resultado) também terá o fundo cinza escuro e sombra */
+            background-color: #1a1a1a;
+            box-shadow: 0 6px 12px rgba(255, 255, 255, 0.15);
+            min-height: auto; /* Remove a altura total forçada */
+            /* Inicialmente oculto, será mostrado pelo JS */
+            display: none;
+            padding: 30px;
+            margin-top: 30px;
+            border-radius: 16px;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
 
         .btn-custom {
             padding: 15px 30px;
@@ -81,54 +108,26 @@
             align-items: center;
             justify-content: center;
             gap: 12px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            background-image: linear-gradient(to right, #ff9800, #90caf9);
+            /* Sombra ajustada para fundo escuro */
+            box-shadow: 0 4px 6px rgba(255, 255, 255, 0.1);
+            background-image: linear-gradient(to right, #ff9800, #90caf9); /* Mantém o gradiente */
             color: white;
             position: relative;
             overflow: hidden;
         }
 
          .btn-custom:hover {
-            background-image: linear-gradient(to right, #f57c00, #64b5f6);
+            background-image: linear-gradient(to right, #f57c00, #64b5f6); /* Mantém o gradiente no hover */
             transform: translateY(-4px);
-            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 6px 8px rgba(255, 255, 255, 0.15); /* Sombra ajustada no hover */
         }
 
-         /* Estilo específico para o botão de voltar, se necessário */
-        .btn-custom.btn-secondary {
-            background-image: linear-gradient(to right, #bdbdbd, #757575);
+         .btn-custom.btn-secondary {
+            background-image: linear-gradient(to right, #bdbdbd, #757575); /* Mantém o gradiente cinza */
         }
         .btn-custom.btn-secondary:hover {
-             background-image: linear-gradient(to right, #a0a0a0, #5a5a5a);
+             background-image: linear-gradient(to right, #a0a0a0, #5a5a5a); /* Mantém o gradiente cinza no hover */
          }
-
-        #resultado, #resultado1, #resultado2, #resultado3, #resultado4 {
-            display: none; /* Inicialmente ocultos */
-            background-color: #fff;
-            padding: 30px;
-            margin-top: 30px;
-            border-radius: 16px;
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-            /* Removendo animation: fadeIn/pulse daqui, será adicionado/removido via JS */
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            /* Adicionado posicionamento para transições */
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            min-height: 100vh; /* Ajustado para ocupar a altura total da viewport para transição */
-            box-sizing: border-box; /* Inclui padding e border na largura/altura */
-             background-image: linear-gradient(to bottom, #90caf9, #f48fb1); /* Mantendo o gradiente para as divs de resultado */
-        }
-
-         #resultado {
-              background-image: none; /* Remove o gradiente para o resultado final */
-              background-color: #fff; /* Fundo branco para o resultado final */
-              min-height: auto; /* Remove a altura total forçada para o resultado final */
-         }
-
 
         /* Animações */
         @keyframes fadeIn {
@@ -144,11 +143,11 @@
 
         #parabens {
             font-size: 4em;
-            color: transparent;
+            color: transparent; /* Cor transparente para o clip */
             -webkit-background-clip: text;
             background-clip: text;
-            background-image: linear-gradient(to right, #ff6b81, #4fc3f7);
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+            background-image: linear-gradient(to right, #ff6b81, #4fc3f7); /* Mantém o gradiente no texto */
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5); /* Sombra mais escura para destaque no fundo escuro */
             animation: pulse 3s infinite;
             transition: font-size 0.5s ease;
         }
@@ -172,14 +171,14 @@
 
         /* Classes de transição controladas por JS */
         .hidden{
-            display:none !important; /* Usa !important para garantir a ocultação */
+            display:none !important;
         }
 
         .page-entering {
             animation: fadeIn 0.5s ease-in-out forwards;
         }
 
-         /* Animações para "ir" para a próxima página (ex: slide da esquerda para a direita) */
+         /* Animações para "ir" para a próxima página */
         .slideOutLeft {
             animation: slideOutLeft 0.5s ease-in-out forwards;
         }
@@ -187,7 +186,7 @@
             from { transform: translateX(0); opacity: 1; }
             to { transform: translateX(-100%); opacity: 0; }
         }
-         .fadeInRight { /* Nova animação para a página entrando pela direita */
+         .fadeInRight {
              animation: fadeInRight 0.5s ease-in-out forwards;
          }
          @keyframes fadeInRight {
@@ -195,15 +194,15 @@
              to { transform: translateX(0); opacity: 1; }
          }
 
-         /* Animações para "voltar" para a página anterior (ex: slide da direita para a esquerda) */
-         .slideOutRight { /* Nova animação para a página saindo para a direita */
+         /* Animações para "voltar" para a página anterior */
+         .slideOutRight {
              animation: slideOutRight 0.5s ease-in-out forwards;
          }
          @keyframes slideOutRight {
              from { transform: translateX(0); opacity: 1; }
              to { transform: translateX(100%); opacity: 0; }
          }
-        .fadeInLeft { /* Ajustado para a página entrando pela esquerda */
+        .fadeInLeft {
             animation: fadeInLeft 0.5s ease-in-out forwards;
         }
         @keyframes fadeInLeft {
@@ -213,9 +212,7 @@
 
         /* Media Queries para Responsividade */
         @media (max-width: 768px) {
-            h1 {
-                font-size: 2.5em;
-            }
+            /* h1 size rule removed */
             p {
                 font-size: 1em;
             }
@@ -234,9 +231,7 @@
         }
 
         @media (max-width: 576px) {
-            h1 {
-                font-size: 2em;
-            }
+             /* h1 size rule removed */
             p {
                 font-size: 0.9em;
             }
@@ -267,11 +262,9 @@
         }
     </style>
 </head>
-<body class="bg-light">
-    <div class="container">
-        <h1>Uma Surpresa Especial!</h1>
+<body class="bg-dark"> <div class="container">
         <div id="mensagemInicial">
-            <p style="color:white; font-size: 1.7em; font-weight: bold;">Olá amigos, temos uma novidade emocionante para compartilhar com vocês. Preparem-se para uma pequena jornada!</p>
+            <p style="font-size: 1.7em; font-weight: bold;">Olá amigos, temos uma novidade emocionante para compartilhar com vocês. Preparem-se para uma pequena jornada!</p>
             <button class="btn btn-primary btn-custom" id="btnProximo1">
                 <i class="fas fa-gift"></i> Clique aqui para o primeiro passo!
             </button>
@@ -288,4 +281,160 @@
         </div>
 
         <div id="resultado2" class="hidden">
-            <p> Algo incrível está
+            <p> Algo incrível está para acontecer em nossas vidas, algo que mudará tudo.</p>
+            <div>
+                <button class="btn btn-primary btn-custom" id="btnProximo3">
+                    <i class="fas fa-baby"></i> Próximo
+                </button>
+                <button class="btn btn-secondary btn-custom" id="btnVoltar2">Voltar</button>
+            </div>
+        </div>
+
+        <div id="resultado3" class="hidden">
+            <p style="font-size: 1.4em; font-weight: bold;"> Preparem seus corações para a grande revelação!</p>
+            <div>
+                <button class="btn btn-primary btn-custom" id="btnProximo4">
+                    <i class="fas fa-drum"></i> Estão preparados?
+                </button>
+                <button class="btn btn-secondary btn-custom" id="btnVoltar3">Voltar</button>
+            </div>
+        </div>
+
+        <div id="resultado4" class="hidden">
+            <p style="font-size: 1.4em; font-weight: bold;">Chegou a hora...</p>
+            <div>
+                <button class="btn btn-primary btn-custom" id="btnProximo5">
+                    <i class="fas fa-key"></i> Preparem-se
+                </button>
+                <button class="btn btn-secondary btn-custom" id="btnVoltar4">Voltar</button>
+            </div>
+        </div>
+
+        <div id="resultado" class="hidden">
+            <h2 id="parabens">Uhuuul!</h2>
+            <p class="emoji">🎉 <i class="fas fa-baby"></i> 🍼👶</p>
+            <p style="font-size: 1.2em; font-weight: bold;">
+                Nós vamos ter um bebê! Estamos muito felizes em compartilhar essa alegria com vocês.
+            </p>
+            <div style="display:flex; gap:10px; justify-content:center;">
+                <button class="btn btn-success btn-custom" id="btnIniciarNovamente"> Iniciar Novamente </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const mensagemInicial = document.getElementById('mensagemInicial');
+        const resultado1 = document.getElementById('resultado1');
+        const resultado2 = document.getElementById('resultado2');
+        const resultado3 = document.getElementById('resultado3');
+        const resultado4 = document.getElementById('resultado4');
+        const resultadoFinal = document.getElementById('resultado');
+
+        const btnProximo1 = document.getElementById('btnProximo1');
+        const btnProximo2 = document.getElementById('btnProximo2');
+        const btnProximo3 = document.getElementById('btnProximo3');
+        const btnProximo4 = document.getElementById('btnProximo4');
+        const btnProximo5 = document.getElementById('btnProximo5');
+
+        const btnVoltar1 = document.getElementById('btnVoltar1');
+        const btnVoltar2 = document.getElementById('btnVoltar2');
+        const btnVoltar3 = document.getElementById('btnVoltar3');
+        const btnVoltar4 = document.getElementById('btnVoltar4');
+
+        const btnIniciarNovamente = document.getElementById('btnIniciarNovamente');
+
+        const forwardExitAnimations = ['slideOutLeft', 'slideOutUp'];
+        let forwardAnimationIndex = 0;
+
+        function goForward(fromPage, toPage) {
+            const exitAnimation = forwardExitAnimations[forwardAnimationIndex % forwardExitAnimations.length];
+            forwardAnimationIndex++;
+
+            fromPage.classList.remove('page-entering', 'fadeInLeft', 'fadeInRight');
+            fromPage.classList.add(exitAnimation);
+
+            // Garante que a página que está saindo não seja visível
+            fromPage.style.pointerEvents = 'none';
+
+            setTimeout(() => {
+                fromPage.classList.add('hidden');
+                fromPage.classList.remove(exitAnimation);
+                toPage.classList.remove('hidden');
+                toPage.classList.add('fadeInRight');
+                 // Restaura a interatividade da página que entrou
+                 toPage.style.pointerEvents = 'auto';
+            }, 500);
+        }
+
+        function goBack(fromPage, toPage) {
+            fromPage.classList.remove('page-entering', 'fadeInLeft', 'fadeInRight');
+            fromPage.classList.add('slideOutRight');
+
+             // Garante que a página que está saindo não seja visível
+            fromPage.style.pointerEvents = 'none';
+
+            setTimeout(() => {
+                fromPage.classList.add('hidden');
+                fromPage.classList.remove('slideOutRight');
+                toPage.classList.remove('hidden');
+                toPage.classList.add('fadeInLeft');
+                // Restaura a interatividade da página que entrou
+                toPage.style.pointerEvents = 'auto';
+            }, 500);
+        }
+
+        // Listeners para os botões de Próximo
+        btnProximo1.addEventListener('click', () => {
+            goForward(mensagemInicial, resultado1);
+        });
+
+        btnProximo2.addEventListener('click', () => {
+            goForward(resultado1, resultado2);
+        });
+
+        btnProximo3.addEventListener('click', () => {
+            goForward(resultado2, resultado3);
+        });
+
+        btnProximo4.addEventListener('click', () => {
+            goForward(resultado3, resultado4);
+        });
+
+        btnProximo5.addEventListener('click', () => {
+            goForward(resultado4, resultadoFinal);
+        });
+
+
+        // Listeners para os botões de Voltar
+        btnVoltar1.addEventListener('click', () => {
+            goBack(resultado1, mensagemInicial);
+        });
+
+        btnVoltar2.addEventListener('click', () => {
+            goBack(resultado2, resultado1);
+        });
+
+        btnVoltar3.addEventListener('click', () => {
+            goBack(resultado3, resultado2);
+        });
+
+        btnVoltar4.addEventListener('click', () => {
+            goBack(resultado4, resultado3);
+        });
+
+        // Listener para o botão Iniciar Novamente
+        btnIniciarNovamente.addEventListener('click', () => {
+            goBack(resultadoFinal, mensagemInicial);
+            forwardAnimationIndex = 0;
+        });
+
+         // Adiciona a animação inicial ao carregar a página
+         document.addEventListener('DOMContentLoaded', () => {
+             mensagemInicial.classList.add('page-entering');
+             // Garante que a página inicial seja interativa ao carregar
+             mensagemInicial.style.pointerEvents = 'auto';
+         });
+
+    </script>
+</body>
+</html>
