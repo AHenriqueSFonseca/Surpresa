@@ -59,8 +59,6 @@
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
         }
 
-
-
         .btn-custom {
             padding: 15px 30px;
             font-size: 1.3em;
@@ -86,8 +84,6 @@
             box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
         }
 
-
-
         #resultado {
             display: none;
             background-color: #fff;
@@ -96,7 +92,7 @@
             border-radius: 16px;
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
             animation: fadeIn 1s ease, pulse 1.5s infinite;
-             flex-direction: column;
+            flex-direction: column;
             align-items: center;
         }
 
@@ -113,11 +109,11 @@
             background-image: linear-gradient(to right, #ff6b81, #4fc3f7);
             text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
             animation: pulse 3s infinite;
-             transition: font-size 0.5s ease;
+            transition: font-size 0.5s ease;
         }
 
         #parabens:hover{
-           font-size: 4.5em;
+            font-size: 4.5em;
         }
 
         @keyframes pulse {
@@ -130,7 +126,7 @@
             font-size: 4em;
             margin-bottom: 20px;
             animation: bounce 1s infinite;
-             transition: transform 0.5s ease;
+            transition: transform 0.5s ease;
         }
 
         @keyframes bounce {
@@ -162,7 +158,7 @@
         .slideOutLeft {
             animation: slideOutLeft 0.5s ease-in-out forwards;
         }
-         @keyframes slideOutLeft {
+        @keyframes slideOutLeft {
             from { transform: translateX(0); opacity: 1; }
             to { transform: translateX(-100%); opacity: 0; }
         }
@@ -195,9 +191,63 @@
         }
 
         .hidden{
-          display:none;
+            display:none;
         }
 
+        /* Media Queries para Responsividade */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5em;
+            }
+            p {
+                font-size: 1em;
+            }
+            .btn-custom {
+                font-size: 1em;
+                padding: 10px 20px;
+                margin: 10px;
+                gap: 8px;
+            }
+            #parabens {
+                font-size: 3em;
+            }
+            .emoji {
+                font-size: 3em;
+            }
+        }
+
+        @media (max-width: 576px) {
+            h1 {
+                font-size: 2em;
+            }
+            p {
+                font-size: 0.9em;
+            }
+            .btn-custom {
+                font-size: 0.9em;
+                padding: 8px 16px;
+                margin: 8px;
+                gap: 6px;
+            }
+            #parabens {
+                font-size: 2.5em;
+            }
+            .emoji {
+                font-size: 2.5em;
+            }
+
+            /* Layout dos botões em coluna em telas menores */
+            #resultado1 > div,
+            #resultado2 > div,
+            #resultado3 > div,
+            #resultado4 > div,
+            #resultado > div {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                align-items: center;
+            }
+        }
     </style>
 </head>
 <body class="bg-light">
@@ -212,166 +262,45 @@
 
         <div id="resultado1" class="page-transition hidden">
             <p style="color:white; font-weight: 600;"> Vocês são muito importantes para nós e queremos que façam parte deste momento.</p>
-            <button class="btn btn-primary btn-custom" id="btnProximo2">
-                <i class="fas fa-heart"></i> Próximo
-            </button>
-             <button class="btn btn-secondary btn-custom" id="btnVoltar1">Voltar</button>
+            <div>
+                <button class="btn btn-primary btn-custom" id="btnProximo2">
+                    <i class="fas fa-heart"></i> Próximo
+                </button>
+                <button class="btn btn-secondary btn-custom" id="btnVoltar1">Voltar</button>
+            </div>
         </div>
 
         <div id="resultado2" class="page-transition hidden">
-             <p style="color:white; font-weight: 600;"> Algo incrível está para acontecer em nossas vidas, algo que mudará tudo.</p>
-            <button class="btn btn-primary btn-custom" id="btnProximo3">
-                <i class="fas fa-baby"></i> Próximo
-            </button>
-            <button class="btn btn-secondary btn-custom" id="btnVoltar2">Voltar</button>
+            <p style="color:white; font-weight: 600;"> Algo incrível está para acontecer em nossas vidas, algo que mudará tudo.</p>
+            <div>
+                <button class="btn btn-primary btn-custom" id="btnProximo3">
+                    <i class="fas fa-baby"></i> Próximo
+                </button>
+                <button class="btn btn-secondary btn-custom" id="btnVoltar2">Voltar</button>
+            </div>
         </div>
 
         <div id="resultado3" class="page-transition hidden">
             <p style="color:white; font-size: 1.4em; font-weight: bold;"> Preparem seus corações para a grande revelação!</p>
-           <button class="btn btn-primary btn-custom" id="btnProximo4">
-                <i class="fas fa-drum"></i> Estão preparados?
-            </button>
-            <button class="btn btn-secondary btn-custom" id="btnVoltar3">Voltar</button>
+            <div>
+                <button class="btn btn-primary btn-custom" id="btnProximo4">
+                    <i class="fas fa-drum"></i> Estão preparados?
+                </button>
+                <button class="btn btn-secondary btn-custom" id="btnVoltar3">Voltar</button>
+            </div>
         </div>
 
         <div id="resultado4" class="page-transition hidden">
             <p style="color: white; font-size: 1.4em; font-weight: bold;">Chegou a hora...</p>
-            <button class="btn btn-primary btn-custom" id="btnProximo5">
-                <i class="fas fa-key"></i> Preparem-se
-            </button>
-            <button class="btn btn-secondary btn-custom" id="btnVoltar4">Voltar</button>
+            <div>
+                <button class="btn btn-primary btn-custom" id="btnProximo5">
+                    <i class="fas fa-key"></i> Preparem-se
+                </button>
+                <button class="btn btn-secondary btn-custom" id="btnVoltar4">Voltar</button>
+            </div>
         </div>
 
         <div id="resultado" class="page-transition hidden">
             <h2 id="parabens" style="font-size: 5em;">Uhuuul!</h2>
             <p class="emoji">🎉 <i class="fas fa-baby"></i> 🍼👶</p>
-            <p style="font-size: 1.2em; font-weight: bold;">
-                Nós vamos ter um bebê! Estamos muito felizes em compartilhar essa alegria com vocês.
-            </p>
-            <div style="display:flex; gap:10px; justify-content:center;">
-              <button class="btn btn-success btn-custom" id="btnIniciarNovamente"> Iniciar Novamente </button>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        const mensagemInicial = document.getElementById('mensagemInicial');
-        const resultado1 = document.getElementById('resultado1');
-        const resultado2 = document.getElementById('resultado2');
-        const resultado3 = document.getElementById('resultado3');
-        const resultado4 = document.getElementById('resultado4');
-        const resultadoFinal = document.getElementById('resultado');
-        const btnProximo1 = document.getElementById('btnProximo1');
-        const btnProximo2 = document.getElementById('btnProximo2');
-        const btnProximo3 = document.getElementById('btnProximo3');
-        const btnProximo4 = document.getElementById('btnProximo4');
-        const btnProximo5 = document.getElementById('btnProximo5');
-        const btnVoltar1 = document.getElementById('btnVoltar1');
-        const btnVoltar2 = document.getElementById('btnVoltar2');
-        const btnVoltar3 = document.getElementById('btnVoltar3');
-        const btnVoltar4 = document.getElementById('btnVoltar4');
-        const btnIniciarNovamente = document.getElementById('btnIniciarNovamente');
-
-
-        let animationIndex = 0;
-        const animations = ['zoomOutFadeIn', 'slideOutLeft', 'slideOutUp', 'fadeInDown'];
-
-        function getNextAnimation() {
-            const animation = animations[animationIndex];
-            animationIndex = (animationIndex + 1) % animations.length;
-            return animation;
-        }
-
-        function changePage(fromPage, toPage) {
-            const outAnimation = getNextAnimation();
-            const inAnimation = getNextAnimation();
-            fromPage.classList.remove('fadeIn');
-            fromPage.classList.add(outAnimation);
-
-            setTimeout(() => {
-                fromPage.style.display = 'none';
-                toPage.style.display = 'flex';
-                toPage.classList.remove('hidden');
-                toPage.classList.add('fadeIn');
-            }, 500);
-        }
-
-
-        btnProximo1.addEventListener('click', () => {
-            changePage(mensagemInicial, resultado1);
-        });
-
-        btnProximo2.addEventListener('click', () => {
-            changePage(resultado1, resultado2);
-        });
-
-         btnProximo3.addEventListener('click', () => {
-            changePage(resultado2, resultado3);
-        });
-
-        btnProximo4.addEventListener('click', () => {
-            changePage(resultado3, resultado4);
-        });
-
-        btnProximo5.addEventListener('click', () => {
-            changePage(resultado4, resultadoFinal);
-        });
-
-        btnVoltar1.addEventListener('click', () => {
-            resultado1.classList.remove('fadeIn');
-            resultado1.classList.add('slideOut');
-            setTimeout(() => {
-                resultado1.style.display = 'none';
-                mensagemInicial.style.display = 'flex';
-                mensagemInicial.classList.remove('hidden');
-                mensagemInicial.classList.add('fadeIn');
-            }, 500);
-        });
-
-        btnVoltar2.addEventListener('click', () => {
-            resultado2.classList.remove('fadeIn');
-            resultado2.classList.add('slideOut');
-             setTimeout(() => {
-                resultado2.style.display = 'none';
-                resultado1.style.display = 'flex';
-                resultado1.classList.remove('hidden');
-                resultado1.classList.add('fadeIn');
-            }, 500);
-        });
-
-        btnVoltar3.addEventListener('click', () => {
-            resultado3.classList.remove('fadeIn');
-            resultado3.classList.add('slideOut');
-             setTimeout(() => {
-                resultado3.style.display = 'none';
-                resultado2.style.display = 'flex';
-                resultado2.classList.remove('hidden');
-                resultado2.classList.add('fadeIn');
-            }, 500);
-        });
-
-        btnVoltar4.addEventListener('click', () => {
-            resultadoFinal.classList.remove('fadeIn');
-            resultadoFinal.classList.add('slideOut');
-             setTimeout(() => {
-                 resultadoFinal.style.display = 'none';
-                  resultado3.style.display = 'flex';
-                resultado3.classList.remove('hidden');
-                resultado3.classList.add('fadeIn');
-            }, 500);
-        });
-
-        btnIniciarNovamente.addEventListener('click', () => {
-            resultadoFinal.classList.remove('fadeIn');
-            resultadoFinal.classList.add('slideOut');
-            setTimeout(() => {
-                resultadoFinal.style.display = 'none';
-                mensagemInicial.style.display = 'flex';
-                mensagemInicial.classList.remove('hidden');
-                mensagemInicial.classList.add('fadeIn');
-                 animationIndex = 0;
-            }, 500);
-        });
-    </script>
-</body>
-</html>
+            <p style="font-size: 1.2em; font-weight
