@@ -408,11 +408,28 @@
             }, 500);
         });
 
-        btnVoltar4.addEventListener('click', () => {
+         btnVoltar4.addEventListener('click', () => {
+            resultadoFinal.classList.remove('fadeIn');
+            resultadoFinal.classList.add('slideOut');
+             setTimeout(() => {
+                 resultadoFinal.style.display = 'none';
+                  resultado3.style.display = 'flex';
+                resultado3.classList.remove('hidden');
+                resultado3.classList.add('fadeIn');
+            }, 500);
+        });
+
+        btnIniciarNovamente.addEventListener('click', () => {
             resultadoFinal.classList.remove('fadeIn');
             resultadoFinal.classList.add('slideOut');
             setTimeout(() => {
-                resultadoFinal.style.display = 'none'
-                      }, 500);
+                resultadoFinal.style.display = 'none';
+                mensagemInicial.style.display = 'flex';
+                mensagemInicial.classList.remove('hidden');
+                mensagemInicial.classList.add('fadeIn');
+                 animationIndex = 0;
+            }, 500);
         });
     </script>
+</body>
+</html>
