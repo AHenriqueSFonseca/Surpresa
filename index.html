@@ -33,9 +33,9 @@
             font-weight: 600;
         }
 
-        /* Estilo para o parágrafo na tela final com fundo colorido */
+        /* Estilo para o parágrafo na tela final com fundo claro */
         #resultado p {
-             color: #000; /* Cor do texto preta para melhor contraste no fundo colorido */
+             color: #000; /* Cor do texto preta para alto contraste no fundo branco */
          }
 
         #mensagemInicial, #resultado1, #resultado2, #resultado3, #resultado4 {
@@ -64,9 +64,9 @@
         }
 
         #resultado {
-            /* Fundo gradiente azul/rosa para a tela final */
-            background-image: linear-gradient(to bottom, #90caf9, #f48fb1);
-             /* Sombra ajustada para ser visível no fundo claro */
+            /* ***** ALTERADO AQUI: Fundo branco sólido para a tela final ***** */
+            background-color: white;
+            /* Sombra ajustada para ser visível no fundo claro */
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
             min-height: auto; /* Remove a altura total forçada */
             /* Inicialmente oculto, será mostrado pelo JS */
@@ -305,10 +305,10 @@
         <div id="resultado" class="hidden">
             <h2 id="parabens">Uhuuul!</h2>
             <p class="emoji">✨🎉🧸 <i class="fas fa-baby"></i> 🍼👶🥳🎊</p>
-            <p style="font-size: 1.2em; font-weight: bold;">
+            <p>
                 Nós vamos ter um bebê! Estamos muito felizes em compartilhar essa alegria com vocês.
             </p>
-            <div style="display:flex; gap:10px; justify-content:center;">
+            <div>
                 <button class="btn btn-success btn-custom" id="btnIniciarNovamente"> Iniciar Novamente </button>
             </div>
         </div>
