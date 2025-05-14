@@ -8,8 +8,8 @@
     <style>
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #000; /* Fundo preto */
-            color: white; /* Cor do texto padrão branca */
+            background-color: #000; /* Mantém o fundo preto do body */
+            color: white; /* Mantém a cor do texto padrão branca */
             margin: 0;
             padding: 0;
             overflow-x: hidden;
@@ -23,35 +23,23 @@
             text-align: center;
         }
 
-        /* Título <h1> removido do HTML, então esta regra CSS não é mais necessária */
-        /* h1 {
-            color: white;
-            margin-bottom: 20px;
-            font-size: 3em;
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
-            animation: fadeIn 1s ease, pulse 1.5s infinite;
-        }
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.06); }
-            100% { transform: scale(1); }
-        } */
+        /* Título <h1> removido do HTML */
 
         p {
             font-size: 1.2em;
             margin-bottom: 25px;
             line-height: 1.7;
-            color: white; /* Garante que parágrafos dentro de divs escuras fiquem brancos */
+            color: white; /* Garante que parágrafos dentro das divs escuras fiquem brancos */
             font-weight: 600;
         }
 
-        /* O parágrafo final (#resultado) terá a cor padrão branca do body, então não precisa de cor específica */
+        /* Estilo para o parágrafo na tela final com fundo colorido */
         #resultado p {
-            color: white; /* Mantém branco no fundo cinza escuro */
-        }
+             color: #000; /* Cor do texto preta para melhor contraste no fundo colorido */
+         }
 
         #mensagemInicial, #resultado1, #resultado2, #resultado3, #resultado4 {
-            background-color: #1a1a1a; /* Fundo cinza escuro para as "páginas" */
+            background-color: #1a1a1a; /* Mantém o fundo cinza escuro para as primeiras páginas */
             padding: 30px;
             border-radius: 16px;
             /* Sombras ajustadas para serem visíveis em fundo escuro */
@@ -76,9 +64,10 @@
         }
 
         #resultado {
-            /* A tela final (#resultado) também terá o fundo cinza escuro e sombra */
-            background-color: #1a1a1a;
-            box-shadow: 0 6px 12px rgba(255, 255, 255, 0.15);
+            /* Fundo gradiente azul/rosa para a tela final */
+            background-image: linear-gradient(to bottom, #90caf9, #f48fb1);
+             /* Sombra ajustada para ser visível no fundo claro */
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
             min-height: auto; /* Remove a altura total forçada */
             /* Inicialmente oculto, será mostrado pelo JS */
             display: none;
@@ -93,8 +82,9 @@
             left: 0;
             width: 100%;
             box-sizing: border-box;
+            /* Animação de entrada adicionada via CSS */
+            animation: fadeIn 1s ease;
         }
-
 
         .btn-custom {
             padding: 15px 30px;
@@ -108,8 +98,8 @@
             align-items: center;
             justify-content: center;
             gap: 12px;
-            /* Sombra ajustada para fundo escuro */
-            box-shadow: 0 4px 6px rgba(255, 255, 255, 0.1);
+            /* Sombra ajustada */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             background-image: linear-gradient(to right, #ff9800, #90caf9); /* Mantém o gradiente */
             color: white;
             position: relative;
@@ -119,14 +109,16 @@
          .btn-custom:hover {
             background-image: linear-gradient(to right, #f57c00, #64b5f6); /* Mantém o gradiente no hover */
             transform: translateY(-4px);
-            box-shadow: 0 6px 8px rgba(255, 255, 255, 0.15); /* Sombra ajustada no hover */
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* Sombra ajustada no hover */
         }
 
          .btn-custom.btn-secondary {
             background-image: linear-gradient(to right, #bdbdbd, #757575); /* Mantém o gradiente cinza */
+             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra ajustada */
         }
         .btn-custom.btn-secondary:hover {
              background-image: linear-gradient(to right, #a0a0a0, #5a5a5a); /* Mantém o gradiente cinza no hover */
+             box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* Sombra ajustada no hover */
          }
 
         /* Animações */
@@ -147,7 +139,7 @@
             -webkit-background-clip: text;
             background-clip: text;
             background-image: linear-gradient(to right, #ff6b81, #4fc3f7); /* Mantém o gradiente no texto */
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5); /* Sombra mais escura para destaque no fundo escuro */
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3); /* Sombra escura para destaque no fundo claro */
             animation: pulse 3s infinite;
             transition: font-size 0.5s ease;
         }
@@ -161,6 +153,7 @@
             margin-bottom: 20px;
             animation: bounce 1s infinite;
             transition: transform 0.5s ease;
+            color: #000; /* Garante que emojis/ícones fiquem escuros no fundo claro */
         }
 
         @keyframes bounce {
@@ -212,7 +205,6 @@
 
         /* Media Queries para Responsividade */
         @media (max-width: 768px) {
-            /* h1 size rule removed */
             p {
                 font-size: 1em;
             }
@@ -231,7 +223,6 @@
         }
 
         @media (max-width: 576px) {
-             /* h1 size rule removed */
             p {
                 font-size: 0.9em;
             }
@@ -262,7 +253,8 @@
         }
     </style>
 </head>
-<body class="bg-dark"> <div class="container">
+<body class="bg-dark">
+    <div class="container">
         <div id="mensagemInicial">
             <p style="font-size: 1.7em; font-weight: bold;">Olá amigos, temos uma novidade emocionante para compartilhar com vocês. Preparem-se para uma pequena jornada!</p>
             <button class="btn btn-primary btn-custom" id="btnProximo1">
@@ -312,7 +304,7 @@
 
         <div id="resultado" class="hidden">
             <h2 id="parabens">Uhuuul!</h2>
-            <p class="emoji">🎉 <i class="fas fa-baby"></i> 🍼👶</p>
+            <p class="emoji">✨🎉🧸 <i class="fas fa-baby"></i> 🍼👶🥳🎊</p>
             <p style="font-size: 1.2em; font-weight: bold;">
                 Nós vamos ter um bebê! Estamos muito felizes em compartilhar essa alegria com vocês.
             </p>
@@ -353,7 +345,6 @@
             fromPage.classList.remove('page-entering', 'fadeInLeft', 'fadeInRight');
             fromPage.classList.add(exitAnimation);
 
-            // Garante que a página que está saindo não seja interativa
             fromPage.style.pointerEvents = 'none';
 
             setTimeout(() => {
@@ -361,8 +352,7 @@
                 fromPage.classList.remove(exitAnimation);
                 toPage.classList.remove('hidden');
                 toPage.classList.add('fadeInRight');
-                 // Restaura a interatividade da página que entrou
-                 toPage.style.pointerEvents = 'auto';
+                toPage.style.pointerEvents = 'auto';
             }, 500);
         }
 
@@ -370,7 +360,6 @@
             fromPage.classList.remove('page-entering', 'fadeInLeft', 'fadeInRight');
             fromPage.classList.add('slideOutRight');
 
-             // Garante que a página que está saindo não seja interativa
             fromPage.style.pointerEvents = 'none';
 
             setTimeout(() => {
@@ -378,7 +367,6 @@
                 fromPage.classList.remove('slideOutRight');
                 toPage.classList.remove('hidden');
                 toPage.classList.add('fadeInLeft');
-                // Restaura a interatividade da página que entrou
                 toPage.style.pointerEvents = 'auto';
             }, 500);
         }
@@ -431,7 +419,6 @@
          // Adiciona a animação inicial ao carregar a página
          document.addEventListener('DOMContentLoaded', () => {
              mensagemInicial.classList.add('page-entering');
-             // Garante que a página inicial seja interativa ao carregar
              mensagemInicial.style.pointerEvents = 'auto';
          });
 
