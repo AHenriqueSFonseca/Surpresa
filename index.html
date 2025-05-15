@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Surpresa Amigos!</title> <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Surpresa Amigos!</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #000; /* Mantém o fundo preto do body */
-            color: white; /* Mantém a cor do texto padrão branca */
+            background-color: #000;
+            color: white;
             margin: 0;
             padding: 0;
             overflow-x: hidden;
@@ -23,29 +24,44 @@
             text-align: center;
         }
 
-        /* Título <h1> removido do HTML */
-
         p {
             font-size: 1.2em;
             margin-bottom: 25px;
             line-height: 1.7;
-            color: white; /* Garante que parágrafos dentro das divs escuras fiquem brancos */
+            color: white;
             font-weight: 600;
         }
 
-        /* Estilo para o parágrafo na tela final com fundo claro */
+        #mensagemInicial p,
+        #resultado1 p,
+        #resultado2 p,
+        #resultado3 p,
+        #resultado4 p {
+            color: #F57C00;
+            font-size: 1.3em;
+        }
+
         #resultado p {
-             color: #000; /* Cor do texto preta para alto contraste no fundo branco */
-         }
+            color: #F57C00;
+            font-size: 1.3em;
+        }
+
+        #resultado .frase-destaque {
+            color: #E65100; 
+            font-size: 4em;   
+            font-weight: bold;
+            line-height: 1.2;   
+            margin-top: 25px;   
+            margin-bottom: 30px; 
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
 
         #mensagemInicial, #resultado1, #resultado2, #resultado3, #resultado4 {
-            background-color: #1a1a1a; /* Mantém o fundo cinza escuro para as primeiras páginas */
+            background-color: #1a1a1a;
             padding: 30px;
             border-radius: 16px;
-            /* Sombras ajustadas para serem visíveis em fundo escuro */
             box-shadow: 0 6px 12px rgba(255, 255, 255, 0.15);
             transition: all 1s ease;
-            /* Animação inicial controlada por JS */
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -60,20 +76,17 @@
 
         #mensagemInicial:hover {
             transform: scale(1.04);
-            box-shadow: 0 8px 16px rgba(255, 255, 255, 0.2); /* Sombra ajustada no hover */
+            box-shadow: 0 8px 16px rgba(255, 255, 255, 0.2);
         }
 
         #resultado {
-            /* ***** ALTERADO AQUI: Fundo branco sólido para a tela final ***** */
-            background-color: white;
-            /* Sombra ajustada para ser visível no fundo claro */
+            background-image: linear-gradient(135deg, #FFCAD4, #BDE0FE);
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-            min-height: auto; /* Remove a altura total forçada */
-            /* Inicialmente oculto, será mostrado pelo JS */
-            display: none;
+            min-height: 100vh;
+            display: flex;
             padding: 30px;
-            margin-top: 30px;
-            border-radius: 16px;
+            margin-top: 0;
+            border-radius: 0;
             flex-direction: column;
             align-items: center;
             justify-content: center;
@@ -82,9 +95,60 @@
             left: 0;
             width: 100%;
             box-sizing: border-box;
-            /* Animação de entrada adicionada via CSS */
-            animation: fadeIn 1s ease;
         }
+
+        /* ÍCONES DECORATIVOS - PRIMEIRA PÁGINA */
+        #mensagemInicial .icones-decorativos-topo {
+            margin-bottom: 25px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+        }
+
+        #mensagemInicial .icone-decorativo {
+            text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.35);
+        }
+
+        #mensagemInicial .icone-decorativo.cor-estrela { color: #FFD700; }
+        #mensagemInicial .icone-decorativo.cor-brilhos { color: #FFA726; }
+        #mensagemInicial .icone-decorativo.cor-foguete { color: #EC407A; }
+
+        .animacao-pulse-icone {
+            animation: pulse-icone-kf 2s infinite ease-in-out;
+        }
+        @keyframes pulse-icone-kf {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+        }
+
+        .animacao-cintilar-icone {
+            animation: cintilar-icone-kf 2.5s infinite;
+        }
+        @keyframes cintilar-icone-kf {
+            0%, 100% { opacity: 0.7; transform: rotate(0deg) scale(1); }
+            20% { opacity: 1; transform: rotate(-8deg) scale(1.12); }
+            40% { opacity: 0.7; transform: rotate(0deg) scale(1); }
+            60% { opacity: 1; transform: rotate(8deg) scale(1.12); }
+            80% { opacity: 0.7; transform: rotate(0deg) scale(1); }
+        }
+
+        .animacao-flutuar-foguete {
+            animation: flutuar-foguete-kf 3.5s infinite ease-in-out;
+        }
+        @keyframes flutuar-foguete-kf {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            25% { transform: translateY(-8px) rotate(-4deg); }
+            50% { transform: translateY(-15px) rotate(0deg); }
+            75% { transform: translateY(-8px) rotate(4deg); }
+        }
+        
+        #mensagemInicial > p[style*="font-size: 1.7em"] {
+            margin-top: 20px; 
+            margin-bottom: 30px;
+        }
+        /* FIM ÍCONES DECORATIVOS */
+
 
         .btn-custom {
             padding: 15px 30px;
@@ -98,36 +162,34 @@
             align-items: center;
             justify-content: center;
             gap: 12px;
-            /* Sombra ajustada */
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            background-image: linear-gradient(to right, #ff9800, #90caf9); /* Mantém o gradiente */
+            background-image: linear-gradient(to right, #ff9800, #90caf9);
             color: white;
             position: relative;
             overflow: hidden;
         }
 
          .btn-custom:hover {
-            background-image: linear-gradient(to right, #f57c00, #64b5f6); /* Mantém o gradiente no hover */
+            background-image: linear-gradient(to right, #f57c00, #64b5f6);
             transform: translateY(-4px);
-            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* Sombra ajustada no hover */
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
         }
 
          .btn-custom.btn-secondary {
-            background-image: linear-gradient(to right, #bdbdbd, #757575); /* Mantém o gradiente cinza */
-             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra ajustada */
+            background-image: linear-gradient(to right, #bdbdbd, #757575);
+             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
-        .btn-custom.btn-secondary:hover {
-             background-image: linear-gradient(to right, #a0a0a0, #5a5a5a); /* Mantém o gradiente cinza no hover */
-             box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* Sombra ajustada no hover */
-         }
+         .btn-custom.btn-secondary:hover {
+            background-image: linear-gradient(to right, #a0a0a0, #5a5a5a);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        }
 
-        /* Animações */
         @keyframes fadeIn {
             from { opacity: 0; transform: scale(0.9); }
             to { opacity: 1; transform: scale(1); }
         }
 
-        @keyframes pulse {
+        @keyframes pulse { /* Animação genérica 'pulse', usada por #parabens */
             0% { transform: scale(1); }
             50% { transform: scale(1.1); }
             100% { transform: scale(1); }
@@ -135,13 +197,14 @@
 
         #parabens {
             font-size: 4em;
-            color: transparent; /* Cor transparente para o clip */
+            color: transparent;
             -webkit-background-clip: text;
             background-clip: text;
-            background-image: linear-gradient(to right, #ff6b81, #4fc3f7); /* Mantém o gradiente no texto */
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3); /* Sombra escura para destaque no fundo claro */
-            animation: pulse 3s infinite;
+            background-image: linear-gradient(to right, #ff6b81, #4fc3f7);
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+            animation: pulse 3s infinite; /* Usando a animação genérica 'pulse' */
             transition: font-size 0.5s ease;
+            margin-bottom: 15px;
         }
 
         #parabens:hover{
@@ -153,8 +216,12 @@
             margin-bottom: 20px;
             animation: bounce 1s infinite;
             transition: transform 0.5s ease;
-            color: #000; /* Garante que emojis/ícones fiquem escuros no fundo claro */
         }
+
+        #resultado .emoji {
+            color: #F57C00;
+        }
+
 
         @keyframes bounce {
             0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
@@ -162,7 +229,6 @@
             60% { transform: translateY(-5px); }
         }
 
-        /* Classes de transição controladas por JS */
         .hidden{
             display:none !important;
         }
@@ -171,7 +237,6 @@
             animation: fadeIn 0.5s ease-in-out forwards;
         }
 
-         /* Animações para "ir" para a próxima página */
         .slideOutLeft {
             animation: slideOutLeft 0.5s ease-in-out forwards;
         }
@@ -180,21 +245,20 @@
             to { transform: translateX(-100%); opacity: 0; }
         }
          .fadeInRight {
-             animation: fadeInRight 0.5s ease-in-out forwards;
-         }
+            animation: fadeInRight 0.5s ease-in-out forwards;
+        }
          @keyframes fadeInRight {
-             from { transform: translateX(100%); opacity: 0; }
-             to { transform: translateX(0); opacity: 1; }
-         }
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
 
-         /* Animações para "voltar" para a página anterior */
          .slideOutRight {
-             animation: slideOutRight 0.5s ease-in-out forwards;
-         }
+            animation: slideOutRight 0.5s ease-in-out forwards;
+        }
          @keyframes slideOutRight {
-             from { transform: translateX(0); opacity: 1; }
-             to { transform: translateX(100%); opacity: 0; }
-         }
+            from { transform: translateX(0); opacity: 1; }
+            to { transform: translateX(100%); opacity: 0; }
+        }
         .fadeInLeft {
             animation: fadeInLeft 0.5s ease-in-out forwards;
         }
@@ -203,52 +267,70 @@
             to { transform: translateX(0); opacity: 1; }
         }
 
-        /* Media Queries para Responsividade */
         @media (max-width: 768px) {
-            p {
-                font-size: 1em;
+            p { font-size: 1em; }
+            #mensagemInicial p,
+            #resultado1 p,
+            #resultado2 p,
+            #resultado3 p,
+            #resultado4 p {
+                font-size: 1.1em;
             }
+            #resultado p {
+                font-size: 1.1em;
+            }
+            #resultado .frase-destaque {
+                font-size: 3em;   
+                line-height: 1.15; 
+                margin-bottom: 25px;
+            }
+            #parabens { font-size: 3em; }
+            .emoji { font-size: 3em; }
+             #mensagemInicial .icones-decorativos-topo { gap: 30px; margin-bottom: 20px;} /* Ajuste responsivo dos ícones */
+             #mensagemInicial .icone-decorativo { font-size: 0.8em !important; } /* Reduz o tamanho dos ícones via font-size (multiplicador para fa-3x) ou usar fa-2x diretamente no HTML para esta view */
+                                                                               /* Se fa-3x é 3x o normal, 0.8 * 3 = 2.4x. Ou mude a classe fa-3x para fa-2x via JS ou tenha HTML duplicado, o que não é ideal. */
+                                                                               /* Uma abordagem mais simples é usar font-size no container dos ícones. */
+            #mensagemInicial .icones-decorativos-topo { font-size: 0.8em; } /* Ajusta o tamanho de todos os ícones dentro (se eles não tiverem fa-Xx classes) */
+                                                                      /* Para fa-Xx classes, isso não funciona diretamente. */
+                                                                      /* Melhor ajustar as classes fa-3x para fa-2x para telas menores se necessário, ou usar unidades relativas no ícone se não usar fa-Xx */
+
+
             .btn-custom {
-                font-size: 1em;
-                padding: 10px 20px;
-                margin: 10px;
-                gap: 8px;
-            }
-            #parabens {
-                font-size: 3em;
-            }
-            .emoji {
-                font-size: 3em;
+                font-size: 1em; padding: 10px 20px; margin: 10px; gap: 8px;
             }
         }
 
         @media (max-width: 576px) {
-            p {
-                font-size: 0.9em;
+            p { font-size: 0.9em; }
+            #mensagemInicial p,
+            #resultado1 p,
+            #resultado2 p,
+            #resultado3 p,
+            #resultado4 p {
+                font-size: 1.0em;
             }
+            #resultado p {
+                font-size: 1.0em;
+            }
+            #resultado .frase-destaque {
+                font-size: 2.5em; 
+                line-height: 1.1;  
+                margin-bottom: 20px;
+            }
+            #parabens { font-size: 2.5em; }
+            .emoji { font-size: 2.5em; }
+            #mensagemInicial .icones-decorativos-topo { gap: 25px; margin-bottom: 15px;}
+            /* Ajuste do tamanho dos ícones para telas pequenas: */
+            /* Se estiver usando classes fa-3x, pode ser mais complexo alterá-las dinamicamente apenas com CSS. */
+            /* Considere usar fa-2x para mobile, ou definir o font-size diretamente na classe .icone-decorativo e não usar fa-Xx */
+            #mensagemInicial .icones-decorativos-topo { font-size: 0.7em; } /* Idem acima */
+
             .btn-custom {
-                font-size: 0.9em;
-                padding: 8px 16px;
-                margin: 8px;
-                gap: 6px;
-            }
-            #parabens {
-                font-size: 2.5em;
-            }
-            .emoji {
-                font-size: 2.5em;
+                font-size: 0.9em; padding: 8px 16px; margin: 8px; gap: 6px;
             }
 
-            /* Layout dos botões em coluna em telas menores */
-            #resultado1 > div,
-            #resultado2 > div,
-            #resultado3 > div,
-            #resultado4 > div,
-            #resultado > div {
-                display: flex;
-                flex-direction: column;
-                gap: 10px;
-                align-items: center;
+            #resultado1 > div, #resultado2 > div, #resultado3 > div, #resultado4 > div, #resultado > div {
+                display: flex; flex-direction: column; gap: 10px; align-items: center;
             }
         }
     </style>
@@ -256,6 +338,11 @@
 <body class="bg-dark">
     <div class="container">
         <div id="mensagemInicial">
+            <div class="icones-decorativos-topo">
+                <i class="fas fa-star fa-3x icone-decorativo cor-estrela animacao-pulse-icone"></i>
+                <i class="fas fa-wand-sparkles fa-3x icone-decorativo cor-brilhos animacao-cintilar-icone"></i>
+                <i class="fas fa-rocket fa-3x icone-decorativo cor-foguete animacao-flutuar-foguete"></i>
+            </div>
             <p style="font-size: 1.7em; font-weight: bold;">Olá amigos, temos uma novidade emocionante para compartilhar com vocês. Preparem-se para uma pequena jornada!</p>
             <button class="btn btn-primary btn-custom" id="btnProximo1">
                 <i class="fas fa-gift"></i> Clique aqui para o primeiro passo!
@@ -305,9 +392,8 @@
         <div id="resultado" class="hidden">
             <h2 id="parabens">Uhuuul!</h2>
             <p class="emoji">✨🎉🧸 <i class="fas fa-baby"></i> 🍼👶🥳🎊</p>
-            <p>
-                Nós vamos ter um bebê! Estamos muito felizes em compartilhar essa alegria com vocês.
-            </p>
+            <p class="frase-destaque">Nós vamos ter um bebê!</p>
+            <p>Estamos muito felizes em compartilhar essa alegria com vocês.</p>
             <div>
                 <button class="btn btn-success btn-custom" id="btnIniciarNovamente"> Iniciar Novamente </button>
             </div>
@@ -335,7 +421,7 @@
 
         const btnIniciarNovamente = document.getElementById('btnIniciarNovamente');
 
-        const forwardExitAnimations = ['slideOutLeft', 'slideOutUp'];
+        const forwardExitAnimations = ['slideOutLeft', 'slideOutLeft'];
         let forwardAnimationIndex = 0;
 
         function goForward(fromPage, toPage) {
@@ -344,12 +430,12 @@
 
             fromPage.classList.remove('page-entering', 'fadeInLeft', 'fadeInRight');
             fromPage.classList.add(exitAnimation);
-
             fromPage.style.pointerEvents = 'none';
 
             setTimeout(() => {
                 fromPage.classList.add('hidden');
                 fromPage.classList.remove(exitAnimation);
+                
                 toPage.classList.remove('hidden');
                 toPage.classList.add('fadeInRight');
                 toPage.style.pointerEvents = 'auto';
@@ -359,69 +445,39 @@
         function goBack(fromPage, toPage) {
             fromPage.classList.remove('page-entering', 'fadeInLeft', 'fadeInRight');
             fromPage.classList.add('slideOutRight');
-
             fromPage.style.pointerEvents = 'none';
 
             setTimeout(() => {
                 fromPage.classList.add('hidden');
                 fromPage.classList.remove('slideOutRight');
+
                 toPage.classList.remove('hidden');
                 toPage.classList.add('fadeInLeft');
                 toPage.style.pointerEvents = 'auto';
             }, 500);
         }
 
-        // Listeners para os botões de Próximo
-        btnProximo1.addEventListener('click', () => {
-            goForward(mensagemInicial, resultado1);
-        });
+        btnProximo1.addEventListener('click', () => goForward(mensagemInicial, resultado1));
+        btnProximo2.addEventListener('click', () => goForward(resultado1, resultado2));
+        btnProximo3.addEventListener('click', () => goForward(resultado2, resultado3));
+        btnProximo4.addEventListener('click', () => goForward(resultado3, resultado4));
+        btnProximo5.addEventListener('click', () => goForward(resultado4, resultadoFinal));
 
-        btnProximo2.addEventListener('click', () => {
-            goForward(resultado1, resultado2);
-        });
+        btnVoltar1.addEventListener('click', () => goBack(resultado1, mensagemInicial));
+        btnVoltar2.addEventListener('click', () => goBack(resultado2, resultado1));
+        btnVoltar3.addEventListener('click', () => goBack(resultado3, resultado2));
+        btnVoltar4.addEventListener('click', () => goBack(resultado4, resultado3));
 
-        btnProximo3.addEventListener('click', () => {
-            goForward(resultado2, resultado3);
-        });
-
-        btnProximo4.addEventListener('click', () => {
-            goForward(resultado3, resultado4);
-        });
-
-        btnProximo5.addEventListener('click', () => {
-            goForward(resultado4, resultadoFinal);
-        });
-
-
-        // Listeners para os botões de Voltar
-        btnVoltar1.addEventListener('click', () => {
-            goBack(resultado1, mensagemInicial);
-        });
-
-        btnVoltar2.addEventListener('click', () => {
-            goBack(resultado2, resultado1);
-        });
-
-        btnVoltar3.addEventListener('click', () => {
-            goBack(resultado3, resultado2);
-        });
-
-        btnVoltar4.addEventListener('click', () => {
-            goBack(resultado4, resultado3);
-        });
-
-        // Listener para o botão Iniciar Novamente
         btnIniciarNovamente.addEventListener('click', () => {
             goBack(resultadoFinal, mensagemInicial);
             forwardAnimationIndex = 0;
         });
 
-         // Adiciona a animação inicial ao carregar a página
          document.addEventListener('DOMContentLoaded', () => {
-             mensagemInicial.classList.add('page-entering');
-             mensagemInicial.style.pointerEvents = 'auto';
+            mensagemInicial.classList.remove('hidden');
+            mensagemInicial.classList.add('page-entering');
+            mensagemInicial.style.pointerEvents = 'auto';
          });
-
     </script>
 </body>
 </html>
